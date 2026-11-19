@@ -8,7 +8,7 @@ import com.skillgap.skill_ai.Repository.MessageRepository;
 import com.skillgap.skill_ai.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import java.util.List;
-
+import com.skillgap.skill_ai.dto.MessageResponse;
 @Service
 public class MessageService {
 
@@ -45,4 +45,24 @@ public class MessageService {
 
     return messageRepository.findByChatId(chatId);
 }
+
+public List<MessageResponse> getChatMessagesAsDTO(Long chatId) {
+
+    chatRepository.findById(chatId)
+        .orElseThrow(() ->
+            new ResourceNotFoundException(
+                "Chat not found with ID: " + chatId
+            )
+        );
+
+    return messageRepository.findByChatId(chatId)
+        .stream()
+        .map(message -> new MessageResponse(
+            message.getId(),
+            message.getContent(),
+            message.getSender()
+        ))
+        .toList();
+}
+
 }

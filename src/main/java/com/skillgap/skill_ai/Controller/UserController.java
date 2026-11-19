@@ -34,4 +34,14 @@ public class UserController {
     public User getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
     }
+
+    // Assign career goal to user
+    @PutMapping("/{userId}/career-goal/{careerGoalId}")
+    public User assignCareerGoal(
+            @PathVariable Long userId,
+            @PathVariable Long careerGoalId) {
+
+        return userService.assignCareerGoal(userId, careerGoalId);
+    }
+
 }

@@ -2,6 +2,7 @@
 package com.skillgap.skill_ai.Controller;
 
 import com.skillgap.skill_ai.dto.MessageRequest;
+import com.skillgap.skill_ai.dto.MessageResponse;
 import com.skillgap.skill_ai.entity.Message;
 import com.skillgap.skill_ai.Service.MessageService;
 import jakarta.validation.Valid;

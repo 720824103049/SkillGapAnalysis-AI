@@ -24,6 +24,10 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @ManyToOne
+    @JoinColumn(name = "career_goal_id")
+    private CareerGoal careerGoal;
+
     public User() {
     }
 
@@ -50,5 +54,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public CareerGoal getCareerGoal() {
+        return careerGoal;
+    }
+
+    public void setCareerGoal(CareerGoal careerGoal) {
+        this.careerGoal = careerGoal;
     }
 }
