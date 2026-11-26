@@ -43,7 +43,7 @@ public class MessageService {
             )
         );
 
-    return messageRepository.findByChatId(chatId);
+    return messageRepository.findByChatIdOrderByIdAsc(chatId);
 }
 
 public List<MessageResponse> getChatMessagesAsDTO(Long chatId) {
@@ -55,7 +55,7 @@ public List<MessageResponse> getChatMessagesAsDTO(Long chatId) {
             )
         );
 
-    return messageRepository.findByChatId(chatId)
+    return messageRepository.findByChatIdOrderByIdAsc(chatId)
         .stream()
         .map(message -> new MessageResponse(
             message.getId(),

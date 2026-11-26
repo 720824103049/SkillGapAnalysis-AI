@@ -12,6 +12,10 @@ public class OpenAIConfig {
 
     @Bean
     public OpenAIClient openAIClient() {
-        return OpenAIOkHttpClient.fromEnv();
+
+        return OpenAIOkHttpClient.builder()
+                .apiKey(System.getenv("GROQ_API_KEY"))
+                .baseUrl("https://api.groq.com/openai/v1")
+                .build();
     }
 }
